@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>mantenedor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-item>
+      <ion-label position="fixed">Rut</ion-label>
+      <ion-input [(ngModel)]="dato.rut" type="text" placeholder="ingrese rut"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Nombre</ion-label>
+      <ion-input [(ngModel)]="dato.nombre" type="text" placeholder="ingrese nombre"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="registrar()" expand="full">Registrar</ion-button>
+    <ion-button (click)="modificar()" expand="full">Modificar</ion-button>
+
+  </ion-card>
+
+  <h1>LISTA DE PERSONAS</h1>
+  <ion-list *ngFor="let d of datos">
+    <ion-item (click)="cargar(d.id)">
+      <p>ID: {{d.id}} - Rut: {{d.rut}} - Nombre: {{d.nombre}}</p>
+      <ion-button (click)="eliminar(d.id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>TIPO USUARIO</ion-label>
+    <ion-select [(ngModel)]="tipo">
+      <ion-select-option value="jefe">Jefe</ion-select-option>
+      <ion-select-option value="empleado">Empleado</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="tipo == 'empleado'">
+    <ion-label>HORAS EXTRAS</ion-label>
+    <ion-input [(ngModel)]="sueldo"></ion-input>
+  </ion-item>
+
+
+
+
+</ion-content>
